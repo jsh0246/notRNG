@@ -27,6 +27,9 @@ public class ProceduralTetrahedron : MonoBehaviour
     {
         mesh = GetComponent<MeshFilter>().mesh;
 
+        transform.position += Vector3.up * 0.25f;
+        transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
         setMeshData(size);
         createProceduralMesh();
     }
@@ -57,5 +60,6 @@ public class ProceduralTetrahedron : MonoBehaviour
 
         Destroy(this.GetComponent<MeshCollider>());
         this.gameObject.AddComponent<MeshCollider>();
+        this.gameObject.GetComponent<MeshCollider>().convex = true;
     }
 }
