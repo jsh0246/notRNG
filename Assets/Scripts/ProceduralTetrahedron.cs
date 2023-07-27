@@ -29,6 +29,7 @@ public class ProceduralTetrahedron : MonoBehaviour
 
         transform.position += Vector3.up * 0.25f;
         transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        //
 
         setMeshData(size);
         createProceduralMesh();
@@ -48,7 +49,6 @@ public class ProceduralTetrahedron : MonoBehaviour
         vertices = new Vector3[] { d0, d1, d2, d0, d2, d3, d0, d3, d1, d1, d3, d2 };
 
         triangles = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-
     }
 
     void createProceduralMesh()
@@ -60,6 +60,9 @@ public class ProceduralTetrahedron : MonoBehaviour
 
         Destroy(this.GetComponent<MeshCollider>());
         this.gameObject.AddComponent<MeshCollider>();
-        this.gameObject.GetComponent<MeshCollider>().convex = true;
+
+        MeshCollider collider = this.gameObject.GetComponent<MeshCollider>();
+        collider.convex = true;
+        collider.isTrigger = true;
     }
 }
