@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
 public class RSPObject : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class RSPObject : MonoBehaviour
     public GameObject target, follower;
 
     private Battle battle;
+
+    public NetworkRunner Runner;
 
     private void Start()
     {
@@ -26,9 +29,15 @@ public class RSPObject : MonoBehaviour
         if (target != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * 10f);
+            //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Runner.DeltaTime * 10f);
         }
     }
-    
+
+    public void Init(NetworkRunner _runner)
+    {
+        Runner = _runner;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

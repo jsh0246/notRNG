@@ -4843,6 +4843,8 @@ GameObject:
   - component: {fileID: 6753045787010376934}
   - component: {fileID: -1758136950885613723}
   - component: {fileID: -2461312998382929112}
+  - component: {fileID: 158297492084902592}
+  - component: {fileID: 4337389627090197330}
   m_Layer: 8
   m_Name: Tetrahedron 1
   m_TagString: Player 1
@@ -4864,7 +4866,7 @@ Transform:
   m_Children:
   - {fileID: 9126313553676937929}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!33 &3373334980109187919
 MeshFilter:
@@ -4985,3 +4987,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846288e719f03b04aaa6a0a00d2b92af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &158297492084902592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272155985530796387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1710889294, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 2
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 0}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
+--- !u!114 &4337389627090197330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272155985530796387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: 4579e949c26dcf042907abd326a67542
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 158297492084902592}
+  SimulationBehaviours: []
