@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 
-public class RSPObject : MonoBehaviour
+public class RSPObject : NetworkBehaviour
 {
     public enum Shape { CUBE, SPHERE, TETRAHEDRON };
     public Shape shape;
@@ -12,14 +12,22 @@ public class RSPObject : MonoBehaviour
 
     private Battle battle;
 
-    public NetworkRunner Runner;
+    private Rigidbody rb;
+    private Vector3 dir;
 
     private void Start()
     {
         battle = GameObject.FindObjectOfType<Battle>();
+        rb = GetComponent<Rigidbody>();
+
     }
 
     private void Update()
+    {
+        //ChasingTarget();
+    }
+
+    public override void FixedUpdateNetwork()
     {
         ChasingTarget();
     }
@@ -28,16 +36,17 @@ public class RSPObject : MonoBehaviour
     {
         if (target != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * 10f);
+            //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * 10f);
             //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Runner.DeltaTime * 10f);
+            //GetComponent<Rigidbody>().velocity = Vector3.forward * 5f;
+
+            dir = target.transform.position - transform.position;
+            rb.MovePosition(transform.position + dir.normalized * 10f * Runner.DeltaTime);
+        } else
+        {
+            battle.SelecTarget(gameObject);
         }
     }
-
-    public void Init(NetworkRunner _runner)
-    {
-        Runner = _runner;
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -57,12 +66,14 @@ public class RSPObject : MonoBehaviour
                 {
                     // 본인 승리
                     battle.player2.Remove(other.gameObject);
+                    Runner.Despawn(other.GetComponent<NetworkObject>());
                     Destroy(other.gameObject);
                 }
                 else if (otherShape == Shape.TETRAHEDRON)
                 {
                     // 본인 패배
                     battle.player1.Remove(gameObject);
+                    Runner.Despawn(Object);
                     Destroy(gameObject);
                 }
             }
@@ -72,6 +83,7 @@ public class RSPObject : MonoBehaviour
                 {
                     // 본인 패배
                     battle.player1.Remove(gameObject);
+                    Runner.Despawn(Object);
                     Destroy(gameObject);
                 }
                 else if (otherShape == Shape.SPHERE)
@@ -82,6 +94,7 @@ public class RSPObject : MonoBehaviour
                 {
                     // 본인 승리
                     battle.player2.Remove(other.gameObject);
+                    Runner.Despawn(other.GetComponent<NetworkObject>());
                     Destroy(other.gameObject);
                 }
             }
@@ -91,12 +104,14 @@ public class RSPObject : MonoBehaviour
                 {
                     // 본인 승리
                     battle.player2.Remove(other.gameObject);
+                    Runner.Despawn(other.GetComponent<NetworkObject>());
                     Destroy(other.gameObject);
                 }
                 else if (otherShape == Shape.SPHERE)
                 {
                     // 본인 패배
                     battle.player1.Remove(gameObject);
+                    Runner.Despawn(Object);
                     Destroy(gameObject);
                 }
                 else if (otherShape == Shape.TETRAHEDRON)

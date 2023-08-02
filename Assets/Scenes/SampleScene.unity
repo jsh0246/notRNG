@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -622,7 +622,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2016108901308047518, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
       propertyPath: Flags
-      value: 133633
+      value: 2561
       objectReference: {fileID: 0}
     - target: {fileID: 2016108901308047518, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -700,7 +700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &692839602
 Transform:
   m_ObjectHideFlags: 0
@@ -867,7 +867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: Flags
-      value: 133633
+      value: 2561
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -1012,6 +1012,7 @@ GameObject:
   - component: {fileID: 904302689}
   - component: {fileID: 904302688}
   - component: {fileID: 904302690}
+  - component: {fileID: 904302691}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1058,6 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6230918d0601054f89af743eccf4164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   player1:
   - {fileID: 4977908914693147867, guid: 35b9568a57ad4064c93c14f1914027f0, type: 3}
   - {fileID: 8595743861501228034, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
@@ -1072,7 +1074,30 @@ MonoBehaviour:
   playerUnitSets:
   - {fileID: 1937923919}
   - {fileID: 692839601}
-  Runner: {fileID: 0}
+--- !u!114 &904302691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904302686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2561
+  NetworkGuid:
+    RawGuidValue: 6d4ca64ff4334f449a656816382bdeac
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 904302690}
+  SimulationBehaviours: []
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,7 +1459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: Flags
-      value: 133633
+      value: 2561
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -1683,7 +1708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1937923920
 Transform:
   m_ObjectHideFlags: 0
@@ -1862,7 +1887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7189882032879561515, guid: 557ba249a049b7f479c6bd53bf9400c6, type: 3}
       propertyPath: Flags
-      value: 133633
+      value: 2561
       objectReference: {fileID: 0}
     - target: {fileID: 7189882032879561515, guid: 557ba249a049b7f479c6bd53bf9400c6, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -1891,7 +1916,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2016108901308047518, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
       propertyPath: Flags
-      value: 133633
+      value: 2561
       objectReference: {fileID: 0}
     - target: {fileID: 2016108901308047518, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -1964,7 +1989,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -913217762779040106, guid: 220bb34c9d9dfe240a64e819201c7c4c, type: 3}
       propertyPath: Flags
-      value: 133633
+      value: 2561
       objectReference: {fileID: 0}
     - target: {fileID: -913217762779040106, guid: 220bb34c9d9dfe240a64e819201c7c4c, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -2105,7 +2130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4876466103675402323, guid: 35b9568a57ad4064c93c14f1914027f0, type: 3}
       propertyPath: Flags
-      value: 133633
+      value: 2561
       objectReference: {fileID: 0}
     - target: {fileID: 4876466103675402323, guid: 35b9568a57ad4064c93c14f1914027f0, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -2132,9 +2157,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tetrahedron
       objectReference: {fileID: 0}
+    - target: {fileID: 1596659805414743668, guid: aa831fcbb73e1ab4c830503fee6e17b9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7830739327239592636, guid: aa831fcbb73e1ab4c830503fee6e17b9, type: 3}
       propertyPath: Flags
-      value: 133633
+      value: 2561
       objectReference: {fileID: 0}
     - target: {fileID: 7830739327239592636, guid: aa831fcbb73e1ab4c830503fee6e17b9, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -2247,7 +2276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: Flags
-      value: 133633
+      value: 2561
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]

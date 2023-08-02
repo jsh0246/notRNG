@@ -17,7 +17,7 @@ public class Battle : MonoBehaviour
 
     private void Update()
     {
-        //print(player1.Count + " " + player2.Count);
+        print(player1.Count + " " + player2.Count);
     }
 
     private void SelectTarget()
@@ -63,6 +63,57 @@ public class Battle : MonoBehaviour
                 {
                     if (p2.target == null)
                         p2.target = p1.gameObject;
+                }
+            }
+        }
+    }
+
+    public void SelecTarget(GameObject obj)
+    {
+        RSPObject rspObj = obj.GetComponent<RSPObject>();
+
+        if(rspObj.playerNumber == 1)
+        {
+            foreach(GameObject objP2 in player2)
+            {
+                RSPObject p2 = objP2.GetComponent<RSPObject>();
+
+                if (rspObj.shape == RSPObject.Shape.CUBE && p2.shape == RSPObject.Shape.SPHERE)
+                {
+                    if (rspObj.target == null)
+                        rspObj.target = p2.gameObject;
+                }
+                else if (rspObj.shape == RSPObject.Shape.SPHERE && p2.shape == RSPObject.Shape.TETRAHEDRON)
+                {
+                    if (rspObj.target == null)
+                        rspObj.target = p2.gameObject;
+                }
+                else if (rspObj.shape == RSPObject.Shape.TETRAHEDRON && p2.shape == RSPObject.Shape.CUBE)
+                {
+                    if (rspObj.target == null)
+                        rspObj.target = p2.gameObject;
+                }
+            }
+        } else if(rspObj.playerNumber == 2)
+        {
+            foreach (GameObject objP1 in player1)
+            {
+                RSPObject p1 = objP1.GetComponent<RSPObject>();
+
+                if (rspObj.shape == RSPObject.Shape.CUBE && p1.shape == RSPObject.Shape.SPHERE)
+                {
+                    if (rspObj.target == null)
+                        rspObj.target = p1.gameObject;
+                }
+                else if (rspObj.shape == RSPObject.Shape.SPHERE && p1.shape == RSPObject.Shape.TETRAHEDRON)
+                {
+                    if (rspObj.target == null)
+                        rspObj.target = p1.gameObject;
+                }
+                else if (rspObj.shape == RSPObject.Shape.TETRAHEDRON && p1.shape == RSPObject.Shape.CUBE)
+                {
+                    if (rspObj.target == null)
+                        rspObj.target = p1.gameObject;
                 }
             }
         }

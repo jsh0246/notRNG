@@ -77,7 +77,7 @@ public class notRNGSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     UnitGenerator unitGenerator;
     Battle battle;
-    //public RSPObject[] units1, units2;
+
     [SerializeField] private NetworkPrefabRef[] units1, units2;
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
@@ -85,23 +85,22 @@ public class notRNGSpawner : MonoBehaviour, INetworkRunnerCallbacks
         unitGenerator = FindObjectOfType<UnitGenerator>();
         battle = FindObjectOfType<Battle>();
 
-        unitGenerator.InitialUnitSetUp(runner);
+        //unitGenerator.InitialUnitSetUp(runner);
         unitGenerator.enabled = true;
         battle.enabled = true;
 
-        if (runner.IsServer)
-        {
-            runner.Spawn(units1[0], new Vector3(-10, 0, 10), Quaternion.identity, player);
-        }
-        else if (runner.IsClient)
-        {
-            runner.Spawn(units2[1], new Vector3(10, 0, -20), Quaternion.identity, player);
-        }
+        //if (runner.IsServer)
+        //{
+        //    runner.Spawn(units1[0], new Vector3(-10, 0, 10), Quaternion.identity, player);
+        //    print("server");
+        //}
+        //else if (runner.IsClient)
+        //{
+        //    runner.Spawn(units2[1], new Vector3(10, 0, 10), Quaternion.identity, player);
+        //    print("cla");
+        //}
 
-        print(runner);
-        print(player);
-        print(player.RawEncoded);
-        print(runner.Config.Simulation.DefaultPlayers);
+
 
         
         

@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da19c5aaecafa304989a3b3059b86b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   shape: 2
   playerNumber: 2
   target: {fileID: 0}
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 2
   InterpolationSpace: 0
-  InterpolationTarget: {fileID: 0}
+  InterpolationTarget: {fileID: 8056358655144382559}
   InterpolateErrorCorrection: 1
   InterpolatedErrorCorrectionSettings:
     MinRate: 3.3
@@ -209,6 +210,7 @@ MonoBehaviour:
     RawGuidValue: aa831fcbb73e1ab4c830503fee6e17b9
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: -3174321804091582768}
   - {fileID: 6698846132926670657}
   SimulationBehaviours: []
 --- !u!1 &8835974174256488987
