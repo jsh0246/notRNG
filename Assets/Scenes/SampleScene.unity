@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -622,7 +622,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2016108901308047518, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
       propertyPath: Flags
-      value: 2561
+      value: 133633
       objectReference: {fileID: 0}
     - target: {fileID: 2016108901308047518, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -631,6 +631,10 @@ PrefabInstance:
     - target: {fileID: 2016108901308047518, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[1]
       value: -3944194369336007802
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290538169774766975, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
+      propertyPath: m_Constraints
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 5073036368120814990, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
       propertyPath: m_RootOrder
@@ -679,6 +683,10 @@ PrefabInstance:
     - target: {fileID: 8595743861501228034, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
       propertyPath: m_Name
       value: Sphere 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8595743861501228034, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -867,7 +875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: Flags
-      value: 2561
+      value: 133633
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -880,6 +888,10 @@ PrefabInstance:
     - target: {fileID: 8272155985530796387, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: m_Name
       value: Tetrahedron 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272155985530796387, guid: 4579e949c26dcf042907abd326a67542, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1010,9 +1022,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 904302689}
-  - component: {fileID: 904302688}
   - component: {fileID: 904302690}
   - component: {fileID: 904302691}
+  - component: {fileID: 904302692}
+  - component: {fileID: 904302693}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1020,18 +1033,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &904302688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904302686}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b809ae7a96365e340a30a995586a49dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &904302689
 Transform:
   m_ObjectHideFlags: 0
@@ -1098,6 +1099,34 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 904302690}
   SimulationBehaviours: []
+--- !u!114 &904302692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904302686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863208146f26eaf4c92dc7e1f8c263b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontSize: 30
+  color: {r: 0, g: 0, b: 0, a: 1}
+  width: 0
+  height: 0
+--- !u!114 &904302693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904302686}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b809ae7a96365e340a30a995586a49dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,7 +1231,6 @@ GameObject:
   - component: {fileID: 978457002}
   - component: {fileID: 978457001}
   - component: {fileID: 978457000}
-  - component: {fileID: 978457003}
   m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
@@ -1296,37 +1324,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978456998}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &978457003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978456998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 9eac802258d16854d98f3d29410dd220, type: 2}
-  m_BuildHeightMesh: 0
 --- !u!1 &1254212272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,7 +1456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: Flags
-      value: 2561
+      value: 133633
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -1472,6 +1469,10 @@ PrefabInstance:
     - target: {fileID: 8272155985530796387, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: m_Name
       value: Tetrahedron 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272155985530796387, guid: 4579e949c26dcf042907abd326a67542, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1887,7 +1888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7189882032879561515, guid: 557ba249a049b7f479c6bd53bf9400c6, type: 3}
       propertyPath: Flags
-      value: 2561
+      value: 133633
       objectReference: {fileID: 0}
     - target: {fileID: 7189882032879561515, guid: 557ba249a049b7f479c6bd53bf9400c6, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -1900,6 +1901,10 @@ PrefabInstance:
     - target: {fileID: 8874351336688042281, guid: 557ba249a049b7f479c6bd53bf9400c6, type: 3}
       propertyPath: m_Name
       value: Sphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874351336688042281, guid: 557ba249a049b7f479c6bd53bf9400c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1916,7 +1921,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2016108901308047518, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
       propertyPath: Flags
-      value: 2561
+      value: 133633
       objectReference: {fileID: 0}
     - target: {fileID: 2016108901308047518, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -1974,6 +1979,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8595743861501228034, guid: d3c1fc0669824254cb7eb8b1f78e2c9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1989,7 +1998,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -913217762779040106, guid: 220bb34c9d9dfe240a64e819201c7c4c, type: 3}
       propertyPath: Flags
-      value: 2561
+      value: 133633
       objectReference: {fileID: 0}
     - target: {fileID: -913217762779040106, guid: 220bb34c9d9dfe240a64e819201c7c4c, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -2046,6 +2055,10 @@ PrefabInstance:
     - target: {fileID: 8210672971770807628, guid: 220bb34c9d9dfe240a64e819201c7c4c, type: 3}
       propertyPath: m_Name
       value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210672971770807628, guid: 220bb34c9d9dfe240a64e819201c7c4c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2276,7 +2289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: Flags
-      value: 2561
+      value: 133633
       objectReference: {fileID: 0}
     - target: {fileID: 4337389627090197330, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -2289,6 +2302,10 @@ PrefabInstance:
     - target: {fileID: 8272155985530796387, guid: 4579e949c26dcf042907abd326a67542, type: 3}
       propertyPath: m_Name
       value: Tetrahedron 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272155985530796387, guid: 4579e949c26dcf042907abd326a67542, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

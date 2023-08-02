@@ -6,17 +6,27 @@ public class Battle : MonoBehaviour
 {
     public HashSet<GameObject> player1, player2;
 
-    private void Start()
+    private void Awake()
     {
+        print("BATTLE");
+
         // HashSet<RPSObject> 로 할 수는 없나?
         player1 = GameObject.FindGameObjectsWithTag("Player 1").ToHashSet();
         player2 = GameObject.FindGameObjectsWithTag("Player 2").ToHashSet();
+    }
 
+    private void Start()
+    {
+        print("BATTLE 2");
+
+        // Awake() 내용이 여기에 있었을 때는 FindGameObjectsWithTag가 끝나기 전에 SelectTarget()이 실행되면서 NULL 오류가 났었다.
         SelectTarget();
     }
 
     private void Update()
     {
+        print("BATTLE 3");
+
         print(player1.Count + " " + player2.Count);
     }
 
@@ -74,7 +84,7 @@ public class Battle : MonoBehaviour
 
         if(rspObj.playerNumber == 1)
         {
-            foreach(GameObject objP2 in player2)
+            foreach (GameObject objP2 in player2)
             {
                 RSPObject p2 = objP2.GetComponent<RSPObject>();
 

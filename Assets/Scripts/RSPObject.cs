@@ -13,18 +13,16 @@ public class RSPObject : NetworkBehaviour
     private Battle battle;
 
     private Rigidbody rb;
-    private Vector3 dir;
+    private Vector3 dir, dirNor;
+
+    private float lerp;
 
     private void Start()
     {
         battle = GameObject.FindObjectOfType<Battle>();
         rb = GetComponent<Rigidbody>();
 
-    }
-
-    private void Update()
-    {
-        //ChasingTarget();
+        lerp = 0f;
     }
 
     public override void FixedUpdateNetwork()
@@ -37,13 +35,39 @@ public class RSPObject : NetworkBehaviour
         if (target != null)
         {
             //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * 10f);
-            //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Runner.DeltaTime * 10f);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Runner.DeltaTime * 15f);
             //GetComponent<Rigidbody>().velocity = Vector3.forward * 5f;
 
             dir = target.transform.position - transform.position;
-            rb.MovePosition(transform.position + dir.normalized * 10f * Runner.DeltaTime);
-        } else
+            //dirNor = dir.normalized;
+
+
+            //rb.MovePosition(transform.position + dir.normalized * 10f * Runner.DeltaTime);
+            rb.rotation = Quaternion.LookRotation(dir);
+
+
+
+            //transform.rotation = Quaternion.Euler(transform.rotation * new Vector3(0f, dir.y, 0f));
+
+            //rb.rotation = Quaternion.LookRotation(new Vector3(0, dir.y, 0f));
+            //rb.rotation = Quaternion.Lerp(rb.rotation, Quaternion.Euler(dir), 1f);
+
+            //Quaternion.Lerp(rb.rotation, Quaternion.Euler(dir), lerp + Runner.DeltaTime);
+
+            //rb.MoveRotation(Quaternion.Euler(dir));
+
+
+
+            //rb.rotation *= Quaternion.Euler(dir);
+            //transform.rotation = Quaternion.Euler(dir);
+
+            //transform.position += dir.normalized * Runner.DeltaTime * 10f;
+            //transform.rotation = Quaternion.Euler(dir);
+        }
+        //else if ((target == null || target.activeSelf == false) && Object.isActiveAndEnabled == true && gameObject.activeSelf == true)
+        else if(target == null || target.activeSelf == false)
         {
+            // 서버 클라 실행할 때는 여전히 오류
             battle.SelecTarget(gameObject);
         }
     }
@@ -66,14 +90,14 @@ public class RSPObject : NetworkBehaviour
                 {
                     // 본인 승리
                     battle.player2.Remove(other.gameObject);
-                    Runner.Despawn(other.GetComponent<NetworkObject>());
+                    //Runner.Despawn(other.GetComponent<NetworkObject>());
                     Destroy(other.gameObject);
                 }
                 else if (otherShape == Shape.TETRAHEDRON)
                 {
                     // 본인 패배
                     battle.player1.Remove(gameObject);
-                    Runner.Despawn(Object);
+                    //Runner.Despawn(Object);
                     Destroy(gameObject);
                 }
             }
@@ -83,7 +107,7 @@ public class RSPObject : NetworkBehaviour
                 {
                     // 본인 패배
                     battle.player1.Remove(gameObject);
-                    Runner.Despawn(Object);
+                    //Runner.Despawn(Object);
                     Destroy(gameObject);
                 }
                 else if (otherShape == Shape.SPHERE)
@@ -94,7 +118,7 @@ public class RSPObject : NetworkBehaviour
                 {
                     // 본인 승리
                     battle.player2.Remove(other.gameObject);
-                    Runner.Despawn(other.GetComponent<NetworkObject>());
+                    //Runner.Despawn(other.GetComponent<NetworkObject>());
                     Destroy(other.gameObject);
                 }
             }
@@ -104,14 +128,14 @@ public class RSPObject : NetworkBehaviour
                 {
                     // 본인 승리
                     battle.player2.Remove(other.gameObject);
-                    Runner.Despawn(other.GetComponent<NetworkObject>());
+                    //Runner.Despawn(other.GetComponent<NetworkObject>());
                     Destroy(other.gameObject);
                 }
                 else if (otherShape == Shape.SPHERE)
                 {
                     // 본인 패배
                     battle.player1.Remove(gameObject);
-                    Runner.Despawn(Object);
+                    //Runner.Despawn(Object);
                     Destroy(gameObject);
                 }
                 else if (otherShape == Shape.TETRAHEDRON)

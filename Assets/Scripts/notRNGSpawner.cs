@@ -30,7 +30,7 @@ public class notRNGSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
 
 
-
+    // runner 라는 변수는 선언해서 써도 공유하고 그냥 가져다 써도(상위클래스의 변수) 공유하는건가?
     private NetworkRunner _runner;
     //private bool _mouseButton0;
     //private bool _mouseButton1;
@@ -82,12 +82,25 @@ public class notRNGSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        unitGenerator = FindObjectOfType<UnitGenerator>();
-        battle = FindObjectOfType<Battle>();
+        // battle을 싱글톤으로 만들어야 하나?
+        // battle 인스턴스가 여러개 만들어지고 있는건 아니겠지?
+        // battle unitgenerator 언제만들어지는거야 대체
+        // 서버 클라 실행 분리
 
-        //unitGenerator.InitialUnitSetUp(runner);
-        unitGenerator.enabled = true;
-        battle.enabled = true;
+
+        if (runner.IsClient)
+        {
+            print(" DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+            unitGenerator = FindObjectOfType<UnitGenerator>();
+            //battle = FindObjectOfType<Battle>();
+
+            //unitGenerator.InitialUnitSetUp(runner);
+            // error
+
+
+            //unitGenerator.enabled = true;
+            battle.enabled = true;
+        }
 
         //if (runner.IsServer)
         //{
@@ -102,8 +115,8 @@ public class notRNGSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
 
 
-        
-        
+
+
 
 
 
