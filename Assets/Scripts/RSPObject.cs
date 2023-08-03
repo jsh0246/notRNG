@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
+using System.Drawing;
 
 public class RSPObject : NetworkBehaviour
 {
@@ -10,24 +11,46 @@ public class RSPObject : NetworkBehaviour
     public int playerNumber;
     public GameObject target, follower;
 
+    [SerializeField] private SpriteRenderer SelectionSprite;
+
     private Battle battle;
+    private UnitGenerator unitGenerator;
 
     private Rigidbody rb;
-    private Vector3 dir, dirNor;
+    private Vector3 dir;
 
-    private float lerp;
+    private bool move;
+    private Vector3 point;
 
     private void Start()
     {
+        SelectionManager.Instance.AvailableUnits.Add(this);
+
         battle = GameObject.FindObjectOfType<Battle>();
+        unitGenerator = GameObject.FindObjectOfType<UnitGenerator>();
         rb = GetComponent<Rigidbody>();
 
-        lerp = 0f;
+        move = false;
+    }
+
+    private void Update()
+    {
+        if(move)
+        {
+            dir = point - transform.position;
+            rb.MovePosition(transform.position + dir.normalized * 10f * Runner.DeltaTime);
+            //rb.MovePosition(transform.position + dir.normalized * 10f * Time.deltaTime);
+            rb.rotation = Quaternion.LookRotation(dir);
+
+            if (Vector3.Distance(point, transform.position) < 0.01f)
+                move = false;
+        }
     }
 
     public override void FixedUpdateNetwork()
     {
-        ChasingTarget();
+        if(unitGenerator.gameStarted)
+            ChasingTarget();
     }
 
     public void ChasingTarget()
@@ -35,14 +58,14 @@ public class RSPObject : NetworkBehaviour
         if (target != null)
         {
             //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * 10f);
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Runner.DeltaTime * 15f);
+            //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Runner.DeltaTime * 15f);
             //GetComponent<Rigidbody>().velocity = Vector3.forward * 5f;
 
             dir = target.transform.position - transform.position;
             //dirNor = dir.normalized;
 
 
-            //rb.MovePosition(transform.position + dir.normalized * 10f * Runner.DeltaTime);
+            rb.MovePosition(transform.position + dir.normalized * 10f * Runner.DeltaTime);
             rb.rotation = Quaternion.LookRotation(dir);
 
 
@@ -144,5 +167,26 @@ public class RSPObject : NetworkBehaviour
                 }
             }
         }
+    }
+
+    public void MoveTo(Vector3 point)
+    {
+        //dir = new Vector3(point.x, 0f, point.z) - transform.position;
+        ////rb.MovePosition(transform.position + dir.normalized * 10f * Runner.DeltaTime);
+        //rb.MovePosition(transform.position + dir * 10f * Time.deltaTime);
+        //rb.rotation = Quaternion.LookRotation(dir);
+
+        move = true;
+        this.point = new Vector3(point.x, 0f, point.z);
+    }
+
+    public void Onselected()
+    {
+        SelectionSprite.gameObject.SetActive(true);
+    }
+
+    public void OnDeselected()
+    {
+        SelectionSprite.gameObject.SetActive(false);
     }
 }

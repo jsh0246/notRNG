@@ -21,7 +21,7 @@ public class notRNGSpawner : MonoBehaviour, INetworkRunnerCallbacks
     public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ArraySegment<byte> data) { }
     public void OnSceneLoadDone(NetworkRunner runner) { }
     public void OnSceneLoadStart(NetworkRunner runner) { }
-    public void OnInput(NetworkRunner runner, NetworkInput input) { }
+    //public void OnInput(NetworkRunner runner, NetworkInput input) { }
     public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken) { }
 
 
@@ -82,25 +82,33 @@ public class notRNGSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
+        if (runner.IsServer)
+        {
+            unitGenerator = FindObjectOfType<UnitGenerator>();
+            battle = FindObjectOfType<Battle>();
+
+            unitGenerator.enabled = true;
+            battle.enabled = true;
+        }
         // battle을 싱글톤으로 만들어야 하나?
         // battle 인스턴스가 여러개 만들어지고 있는건 아니겠지?
         // battle unitgenerator 언제만들어지는거야 대체
         // 서버 클라 실행 분리
 
 
-        if (runner.IsClient)
-        {
-            print(" DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
-            unitGenerator = FindObjectOfType<UnitGenerator>();
-            //battle = FindObjectOfType<Battle>();
+        //if (runner.IsClient)
+        //{
+        //    print(" DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+        //    //unitGenerator = FindObjectOfType<UnitGenerator>();
+        //    //battle = FindObjectOfType<Battle>();
 
-            //unitGenerator.InitialUnitSetUp(runner);
-            // error
+        //    //unitGenerator.InitialUnitSetUp(runner);
+        //    // error
+        //    print(unitGenerator);
+        //    print(battle);
 
 
-            //unitGenerator.enabled = true;
-            battle.enabled = true;
-        }
+        //}
 
         //if (runner.IsServer)
         //{
@@ -173,4 +181,9 @@ public class notRNGSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     //    input.Set(data);
     //}
+
+    public void OnInput(NetworkRunner runner, NetworkInput input)
+    {
+        
+    }
 }

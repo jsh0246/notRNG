@@ -24,8 +24,8 @@ public class FpsStatus : MonoBehaviour
         GUI.Label(position, text, style);
     }
 
-    private void Update()
-    {
-        Application.targetFrameRate = 60;
-    }
+    //private void Update()
+    //{
+    //    Application.targetFrameRate = 60;
+    //}
 }

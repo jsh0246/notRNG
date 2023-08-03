@@ -12,15 +12,23 @@ public class UnitGenerator : NetworkBehaviour
 
     private Battle battle;
 
+    public bool gameStarted;
+
     private void Start()
     {
-        print("UNITGENERATOR");
-
         units = new List<GameObject[]> { player1, player2 };
         battle = GameObject.FindObjectOfType<Battle>();
 
+        gameStarted = false;
+    }
+
+    public void StartGenerateUnits()
+    {
         StartCoroutine("GeneratePlayer1");
         StartCoroutine("GeneratePlayer2");
+
+        //battle.enabled = true;
+        gameStarted = true;
     }
 
     public IEnumerator GeneratePlayer1()
