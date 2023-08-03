@@ -15,11 +15,10 @@ public class PlayerInput : MonoBehaviour
     private float MouseDownTime;
     private Vector2 StartMousePosition;
 
-    private Battle battle;
 
     private void Start()
     {
-        battle = GameObject.FindObjectOfType<Battle>();
+
     }
 
     private void Update()
@@ -27,7 +26,7 @@ public class PlayerInput : MonoBehaviour
         HandleSelectionInputs();
         HandleMovementInputs();
 
-        print(SelectionManager.Instance.AvailableUnits.Count + " " + SelectionManager.Instance.SelectedUnits.Count);
+        print("Available : " + SelectionManager.Instance.AvailableUnits.Count + " " + " Selected : " + SelectionManager.Instance.SelectedUnits.Count);
     }
 
     private void HandleMovementInputs()

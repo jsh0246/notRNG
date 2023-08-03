@@ -35,7 +35,17 @@ public class RSPObject : NetworkBehaviour
 
     private void Update()
     {
-        if(move)
+
+    }
+
+    public override void FixedUpdateNetwork()
+    {
+        base.FixedUpdateNetwork();
+
+        if(unitGenerator.gameStarted)
+            ChasingTarget();
+
+        if (move)
         {
             dir = point - transform.position;
             rb.MovePosition(transform.position + dir.normalized * 10f * Runner.DeltaTime);
@@ -45,12 +55,6 @@ public class RSPObject : NetworkBehaviour
             if (Vector3.Distance(point, transform.position) < 0.01f)
                 move = false;
         }
-    }
-
-    public override void FixedUpdateNetwork()
-    {
-        if(unitGenerator.gameStarted)
-            ChasingTarget();
     }
 
     public void ChasingTarget()
@@ -65,7 +69,7 @@ public class RSPObject : NetworkBehaviour
             //dirNor = dir.normalized;
 
 
-            rb.MovePosition(transform.position + dir.normalized * 10f * Runner.DeltaTime);
+            rb.MovePosition(transform.position + dir.normalized * Runner.DeltaTime * 20f);
             rb.rotation = Quaternion.LookRotation(dir);
 
 
@@ -97,11 +101,14 @@ public class RSPObject : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //RSPObject thisRSPOBject = GetComponent<RSPObject>();
+
         if(other.CompareTag(this.tag) == false && (other.CompareTag("Player 1") || other.CompareTag("Player 2")))
         {
             // 애니메이션 추가
 
             Shape otherShape = other.GetComponent<RSPObject>().shape;
+            RSPObject otherRSPObject = other.GetComponent<RSPObject>();
 
             if (shape == Shape.CUBE)
             {
@@ -114,6 +121,11 @@ public class RSPObject : NetworkBehaviour
                     // 본인 승리
                     battle.player2.Remove(other.gameObject);
                     //Runner.Despawn(other.GetComponent<NetworkObject>());
+                    SelectionManager.Instance.AvailableUnits.Remove(otherRSPObject);
+
+                    if(otherRSPObject.SelectionSprite.gameObject.activeSelf)
+                        SelectionManager.Instance.SelectedUnits.Remove(otherRSPObject);
+
                     Destroy(other.gameObject);
                 }
                 else if (otherShape == Shape.TETRAHEDRON)
@@ -121,6 +133,11 @@ public class RSPObject : NetworkBehaviour
                     // 본인 패배
                     battle.player1.Remove(gameObject);
                     //Runner.Despawn(Object);
+                    SelectionManager.Instance.AvailableUnits.Remove(this);
+
+                    if (SelectionSprite.gameObject.activeSelf)
+                        SelectionManager.Instance.SelectedUnits.Remove(this);
+
                     Destroy(gameObject);
                 }
             }
@@ -131,6 +148,11 @@ public class RSPObject : NetworkBehaviour
                     // 본인 패배
                     battle.player1.Remove(gameObject);
                     //Runner.Despawn(Object);
+                    SelectionManager.Instance.AvailableUnits.Remove(this);
+
+                    if (SelectionSprite.gameObject.activeSelf)
+                        SelectionManager.Instance.SelectedUnits.Remove(this);
+
                     Destroy(gameObject);
                 }
                 else if (otherShape == Shape.SPHERE)
@@ -142,6 +164,11 @@ public class RSPObject : NetworkBehaviour
                     // 본인 승리
                     battle.player2.Remove(other.gameObject);
                     //Runner.Despawn(other.GetComponent<NetworkObject>());
+                    SelectionManager.Instance.AvailableUnits.Remove(otherRSPObject);
+
+                    if (otherRSPObject.SelectionSprite.gameObject.activeSelf)
+                        SelectionManager.Instance.SelectedUnits.Remove(otherRSPObject);
+
                     Destroy(other.gameObject);
                 }
             }
@@ -152,6 +179,11 @@ public class RSPObject : NetworkBehaviour
                     // 본인 승리
                     battle.player2.Remove(other.gameObject);
                     //Runner.Despawn(other.GetComponent<NetworkObject>());
+                    SelectionManager.Instance.AvailableUnits.Remove(otherRSPObject);
+
+                    if (otherRSPObject.SelectionSprite.gameObject.activeSelf)
+                        SelectionManager.Instance.SelectedUnits.Remove(otherRSPObject);
+
                     Destroy(other.gameObject);
                 }
                 else if (otherShape == Shape.SPHERE)
@@ -159,6 +191,11 @@ public class RSPObject : NetworkBehaviour
                     // 본인 패배
                     battle.player1.Remove(gameObject);
                     //Runner.Despawn(Object);
+                    SelectionManager.Instance.AvailableUnits.Remove(this);
+
+                    if (SelectionSprite.gameObject.activeSelf)
+                        SelectionManager.Instance.SelectedUnits.Remove(this);
+
                     Destroy(gameObject);
                 }
                 else if (otherShape == Shape.TETRAHEDRON)
