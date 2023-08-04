@@ -40,11 +40,13 @@ public class RSPObject : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        base.FixedUpdateNetwork();
+        //base.FixedUpdateNetwork();
 
         if(unitGenerator.gameStarted)
             ChasingTarget();
 
+        // 마우스 클릭 Move vs ChasingTarget() 머가 먼저 되지?? 어떻게 알지?
+        // target쫓으러 가다가 움직임 넣어서 다른데도 가다가 타겟이 없어지면 어떤 명령이 들어갈까 다른데로 가던걸 마무리할까 다시 새로운 target을 잡으러갈까?
         if (move)
         {
             dir = point - transform.position;
@@ -52,7 +54,7 @@ public class RSPObject : NetworkBehaviour
             //rb.MovePosition(transform.position + dir.normalized * 10f * Time.deltaTime);
             rb.rotation = Quaternion.LookRotation(dir);
 
-            if (Vector3.Distance(point, transform.position) < 0.01f)
+            if (Vector3.Distance(point, transform.position) < 0.1f)
                 move = false;
         }
     }
@@ -61,35 +63,10 @@ public class RSPObject : NetworkBehaviour
     {
         if (target != null)
         {
-            //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * 10f);
-            //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Runner.DeltaTime * 15f);
-            //GetComponent<Rigidbody>().velocity = Vector3.forward * 5f;
-
             dir = target.transform.position - transform.position;
-            //dirNor = dir.normalized;
 
-
-            rb.MovePosition(transform.position + dir.normalized * Runner.DeltaTime * 20f);
+            rb.MovePosition(transform.position + dir.normalized * Runner.DeltaTime * 5f);
             rb.rotation = Quaternion.LookRotation(dir);
-
-
-
-            //transform.rotation = Quaternion.Euler(transform.rotation * new Vector3(0f, dir.y, 0f));
-
-            //rb.rotation = Quaternion.LookRotation(new Vector3(0, dir.y, 0f));
-            //rb.rotation = Quaternion.Lerp(rb.rotation, Quaternion.Euler(dir), 1f);
-
-            //Quaternion.Lerp(rb.rotation, Quaternion.Euler(dir), lerp + Runner.DeltaTime);
-
-            //rb.MoveRotation(Quaternion.Euler(dir));
-
-
-
-            //rb.rotation *= Quaternion.Euler(dir);
-            //transform.rotation = Quaternion.Euler(dir);
-
-            //transform.position += dir.normalized * Runner.DeltaTime * 10f;
-            //transform.rotation = Quaternion.Euler(dir);
         }
         //else if ((target == null || target.activeSelf == false) && Object.isActiveAndEnabled == true && gameObject.activeSelf == true)
         else if(target == null || target.activeSelf == false)
@@ -103,7 +80,7 @@ public class RSPObject : NetworkBehaviour
     {
         //RSPObject thisRSPOBject = GetComponent<RSPObject>();
 
-        if(other.CompareTag(this.tag) == false && (other.CompareTag("Player 1") || other.CompareTag("Player 2")))
+        if(other.CompareTag(gameObject.tag) == false && (other.CompareTag("Player 1") || other.CompareTag("Player 2")))
         {
             // 애니메이션 추가
 
@@ -119,57 +96,75 @@ public class RSPObject : NetworkBehaviour
                 else if (otherShape == Shape.SPHERE)
                 {
                     // 본인 승리
-                    battle.player2.Remove(other.gameObject);
-                    //Runner.Despawn(other.GetComponent<NetworkObject>());
+                    if(playerNumber == 1) battle.player2.Remove(other.gameObject);
+                    else if (playerNumber == 2) battle.player1.Remove(other.gameObject);
+
+                    
                     SelectionManager.Instance.AvailableUnits.Remove(otherRSPObject);
 
                     if(otherRSPObject.SelectionSprite.gameObject.activeSelf)
                         SelectionManager.Instance.SelectedUnits.Remove(otherRSPObject);
 
-                    Destroy(other.gameObject);
+                    //Destroy(other.gameObject);
+                    Runner.Despawn(other.GetComponent<NetworkObject>());
                 }
-                else if (otherShape == Shape.TETRAHEDRON)
-                {
-                    // 본인 패배
-                    battle.player1.Remove(gameObject);
-                    //Runner.Despawn(Object);
-                    SelectionManager.Instance.AvailableUnits.Remove(this);
+                //else if (otherShape == Shape.TETRAHEDRON)
+                //{
+                //    // 본인 패배
+                //    if (playerNumber == 1) battle.player2.Remove(gameObject);
+                //    else if (playerNumber == 2) battle.player1.Remove(gameObject);
 
-                    if (SelectionSprite.gameObject.activeSelf)
-                        SelectionManager.Instance.SelectedUnits.Remove(this);
+                //    battle.player1.Remove(gameObject);
 
-                    Destroy(gameObject);
-                }
+                //    SelectionManager.Instance.AvailableUnits.Remove(this);
+
+                //    if (SelectionSprite.gameObject.activeSelf)
+                //        SelectionManager.Instance.SelectedUnits.Remove(this);
+
+                //    //Destroy(gameObject);
+                //    Runner.Despawn(Object);
+                //}
             }
             else if (shape == Shape.SPHERE)
             {
-                if (otherShape == Shape.CUBE)
-                {
-                    // 본인 패배
-                    battle.player1.Remove(gameObject);
-                    //Runner.Despawn(Object);
-                    SelectionManager.Instance.AvailableUnits.Remove(this);
+                //if (otherShape == Shape.CUBE)
+                //{
+                //    // 본인 패배
+                //    //battle.player1.Remove(gameObject);
 
-                    if (SelectionSprite.gameObject.activeSelf)
-                        SelectionManager.Instance.SelectedUnits.Remove(this);
+                //    if (playerNumber == 1) battle.player2.Remove(gameObject);
+                //    else if (playerNumber == 2) battle.player1.Remove(gameObject);
 
-                    Destroy(gameObject);
-                }
-                else if (otherShape == Shape.SPHERE)
+
+                //    SelectionManager.Instance.AvailableUnits.Remove(this);
+
+                //    if (SelectionSprite.gameObject.activeSelf)
+                //        SelectionManager.Instance.SelectedUnits.Remove(this);
+
+                //    Destroy(gameObject);
+                //    Runner.Despawn(Object);
+                //}
+                //else 
+                if (otherShape == Shape.SPHERE)
                 {
                     // 무승부
                 }
                 else if (otherShape == Shape.TETRAHEDRON)
                 {
                     // 본인 승리
-                    battle.player2.Remove(other.gameObject);
-                    //Runner.Despawn(other.GetComponent<NetworkObject>());
+                    //battle.player2.Remove(other.gameObject);
+
+                    if (playerNumber == 1) battle.player2.Remove(other.gameObject);
+                    else if (playerNumber == 2) battle.player1.Remove(other.gameObject);
+
+                    
                     SelectionManager.Instance.AvailableUnits.Remove(otherRSPObject);
 
                     if (otherRSPObject.SelectionSprite.gameObject.activeSelf)
                         SelectionManager.Instance.SelectedUnits.Remove(otherRSPObject);
 
-                    Destroy(other.gameObject);
+                    //Destroy(other.gameObject);
+                    Runner.Despawn(other.GetComponent<NetworkObject>());
                 }
             }
             else if (shape == Shape.TETRAHEDRON)
@@ -177,27 +172,37 @@ public class RSPObject : NetworkBehaviour
                 if (otherShape == Shape.CUBE)
                 {
                     // 본인 승리
-                    battle.player2.Remove(other.gameObject);
-                    //Runner.Despawn(other.GetComponent<NetworkObject>());
+                    //battle.player2.Remove(other.gameObject);
+
+                    if (playerNumber == 1) battle.player2.Remove(other.gameObject);
+                    else if (playerNumber == 2) battle.player1.Remove(other.gameObject);
+
+                    
                     SelectionManager.Instance.AvailableUnits.Remove(otherRSPObject);
 
                     if (otherRSPObject.SelectionSprite.gameObject.activeSelf)
                         SelectionManager.Instance.SelectedUnits.Remove(otherRSPObject);
 
-                    Destroy(other.gameObject);
+                    //Destroy(other.gameObject);
+                    Runner.Despawn(other.GetComponent<NetworkObject>());
                 }
-                else if (otherShape == Shape.SPHERE)
-                {
-                    // 본인 패배
-                    battle.player1.Remove(gameObject);
-                    //Runner.Despawn(Object);
-                    SelectionManager.Instance.AvailableUnits.Remove(this);
+                //else if (otherShape == Shape.SPHERE)
+                //{
+                //    // 본인 패배
+                //    //battle.player1.Remove(gameObject);
 
-                    if (SelectionSprite.gameObject.activeSelf)
-                        SelectionManager.Instance.SelectedUnits.Remove(this);
+                //    if (playerNumber == 1) battle.player2.Remove(gameObject);
+                //    else if (playerNumber == 2) battle.player1.Remove(gameObject);
 
-                    Destroy(gameObject);
-                }
+
+                //    SelectionManager.Instance.AvailableUnits.Remove(this);
+
+                //    if (SelectionSprite.gameObject.activeSelf)
+                //        SelectionManager.Instance.SelectedUnits.Remove(this);
+
+                //    Destroy(gameObject);
+                //    Runner.Despawn(Object);
+                //}
                 else if (otherShape == Shape.TETRAHEDRON)
                 {
                     // 무승부

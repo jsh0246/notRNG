@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour
         HandleSelectionInputs();
         HandleMovementInputs();
 
-        print("Available : " + SelectionManager.Instance.AvailableUnits.Count + " " + " Selected : " + SelectionManager.Instance.SelectedUnits.Count);
+        //print("Available : " + SelectionManager.Instance.AvailableUnits.Count + " " + " Selected : " + SelectionManager.Instance.SelectedUnits.Count);
     }
 
     private void HandleMovementInputs()

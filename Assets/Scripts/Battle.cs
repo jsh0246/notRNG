@@ -21,7 +21,7 @@ public class Battle : MonoBehaviour
 
     private void Update()
     {
-        //print(player1.Count + " " + player2.Count);
+        print(player1.Count + " " + player2.Count);
     }
 
     private void SelectTarget()

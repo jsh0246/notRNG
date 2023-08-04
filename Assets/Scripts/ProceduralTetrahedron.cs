@@ -56,11 +56,16 @@ public class ProceduralTetrahedron : MonoBehaviour
         mesh.triangles = triangles;
         mesh.RecalculateNormals();
 
-        Destroy(this.GetComponent<MeshCollider>());
-        this.gameObject.AddComponent<MeshCollider>();
+        // 메시 콜라이더를 자식에게 두면 충돌 체크가 제대로 안되고 부모에게 두면 Mesh renderer랑 같은 컴포넌트에 안있어서 또 제대로 안된다
+        // 그냥 메시 콜라이더 안쓰고 비슷한거 수동으로 부모에다 만드는 쪽으로 임시방편 처리했다
 
-        MeshCollider collider = this.gameObject.GetComponent<MeshCollider>();
-        collider.convex = true;
-        collider.isTrigger = true;
+        //Destroy(this.GetComponent<MeshCollider>());
+        //this.transform.parent.gameObject.AddComponent<MeshCollider>();
+        //gameObject.AddComponent<MeshCollider>();
+
+        //MeshCollider collider = this.transform.parent.gameObject.GetComponent<MeshCollider>();
+        //MeshCollider collider = gameObject.GetComponent<MeshCollider>();
+        //collider.convex = true;
+        //collider.isTrigger = true;
     }
 }
