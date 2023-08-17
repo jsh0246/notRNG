@@ -75,19 +75,20 @@ public class notRNGSpawner : MonoBehaviour, INetworkRunnerCallbacks
     //[SerializeField] private NetworkPrefabRef _playerPrefab;
     //private Dictionary<PlayerRef, NetworkObject> _spawnedCharacters = new Dictionary<PlayerRef, NetworkObject>();
 
-    UnitGenerator unitGenerator;
+    //UnitGenerator unitGenerator;
     Battle battle;
+    int playerCount = 0;
 
-    [SerializeField] private NetworkPrefabRef[] units1, units2;
+    //[SerializeField] private NetworkPrefabRef[] units1, units2;
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         if (runner.IsServer)
         {
-            unitGenerator = FindObjectOfType<UnitGenerator>();
+            //unitGenerator = FindObjectOfType<UnitGenerator>();
             battle = FindObjectOfType<Battle>();
 
-            unitGenerator.enabled = true;
+            //unitGenerator.enabled = true;
             battle.enabled = true;
         }
         // battle을 싱글톤으로 만들어야 하나?

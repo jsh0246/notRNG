@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class Notes : MonoBehaviour
 {
+    public static Notes instance = null;
 
+    private void Start()
+    {
+
+    }
+
+    private void Update()
+    {
+
+    }
 }
 
 // 스폰 포인트 돌아다니기?

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
+//[RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
 public class ProceduralTetrahedron : MonoBehaviour
 {
     public float size = 1.0f;
@@ -23,7 +23,8 @@ public class ProceduralTetrahedron : MonoBehaviour
 
     void Start()
     {
-        mesh = GetComponent<MeshFilter>().mesh;
+        mesh = GetComponentInChildren<MeshFilter>().mesh;
+        //mesh = GetComponent<MeshFilter>().mesh;
 
         transform.position += Vector3.up * 0.25f;
         transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
