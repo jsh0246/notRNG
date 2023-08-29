@@ -1,18 +1,23 @@
 using Fusion;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class Players : MonoBehaviour
+public class Players : NetworkBehaviour
 {
     public static Players instance = null;
-
+    
     public List<PlayerRef> players;
 
-    private void Awake()
+    public TextMeshProUGUI message;
+
+    private  void Awake()
     {
         if (instance == null)
         {
             instance = this;
+
+            message = GameObject.FindFirstObjectByType<TextMeshProUGUI>();
 
             players = new List<PlayerRef>();
 
@@ -28,6 +33,9 @@ public class Players : MonoBehaviour
     public void AddPlayers(PlayerRef player)
     {
         players.Add(player);
+        
+        print(players.Count);
+        message.text = players.Count.ToString();
     }
 
     public static Players Instance

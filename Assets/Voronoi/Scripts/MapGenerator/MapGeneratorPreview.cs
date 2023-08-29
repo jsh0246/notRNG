@@ -59,7 +59,7 @@ public partial class MapGeneratorPreview : MonoBehaviour
 
     public void GenerateMap()
     {
-
+        seed = (int)System.DateTime.Now.Ticks;
         var startTime = DateTime.Now;
         //var points = GetMyPoints();
         var points = GetPoints();

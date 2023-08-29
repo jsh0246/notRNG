@@ -30,11 +30,11 @@ public class UnitGenerator : NetworkBehaviour
 
     public void StartGenerateUnits()
     {
-        if (Runner.IsServer)
+        //if (Runner.IsServer)
         {
             StartCoroutine(GeneratePlayer1());
         }
-        else if (Runner.IsClient)
+        //else if (Runner.IsClient)
         {
             StartCoroutine(GeneratePlayer2());
         }
@@ -52,10 +52,8 @@ public class UnitGenerator : NetworkBehaviour
             int r = Random.Range(0, 3);
             int rPos = Random.Range(-20, 20);
 
-            print(Runner.ActivePlayers);
-
-            NetworkObject obj = Runner.Spawn(units[0][r], spawnPoint[0].transform.position + Vector3.forward * rPos, units[0][r].transform.rotation);
-            //NetworkObject obj = Runner.Spawn(units[0][r], spawnPoint[0].transform.position + Vector3.forward * rPos, units[0][r].transform.rotation, Players.instance.players[0]);
+            //NetworkObject obj = Runner.Spawn(units[0][r], spawnPoint[0].transform.position + Vector3.forward * rPos, units[0][r].transform.rotation);
+            NetworkObject obj = Runner.Spawn(units[0][r], spawnPoint[0].transform.position + Vector3.forward * rPos, units[0][r].transform.rotation, Players.instance.players[0]);
 
             RSPObject rspObj = obj.gameObject.GetComponent<RSPObject>();
             UnitSets.instance.units[0][r].Add(rspObj);
@@ -77,8 +75,8 @@ public class UnitGenerator : NetworkBehaviour
             int r = Random.Range(0, 3);
             int rPos = Random.Range(-20, 20);
 
-            NetworkObject obj = Runner.Spawn(units[1][r], spawnPoint[1].transform.position + Vector3.forward * rPos, units[1][r].transform.rotation);
-            //NetworkObject obj = Runner.Spawn(units[1][r], spawnPoint[1].transform.position + Vector3.forward * rPos, units[1][r].transform.rotation, Players.instance.players[1]);
+            //NetworkObject obj = Runner.Spawn(units[1][r], spawnPoint[1].transform.position + Vector3.forward * rPos, units[1][r].transform.rotation);
+            NetworkObject obj = Runner.Spawn(units[1][r], spawnPoint[1].transform.position + Vector3.forward * rPos, units[1][r].transform.rotation, Players.instance.players[1]);
 
             RSPObject rspObj = obj.gameObject.GetComponent<RSPObject>();
             UnitSets.instance.units[1][r].Add(rspObj);

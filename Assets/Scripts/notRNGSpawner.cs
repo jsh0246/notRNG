@@ -90,7 +90,19 @@ public class notRNGSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
             //unitGenerator.enabled = true;
             battle.enabled = true;
+
+            
+
+            print("Yes your honor");
+            Players.instance.AddPlayers(player);
+        } else if(runner.IsClient)
+        {
+            print("Maybe");
+            Players.instance.AddPlayers(player);
         }
+
+        //Players.instance.AddPlayers(player);
+
         // battle을 싱글톤으로 만들어야 하나?
         // battle 인스턴스가 여러개 만들어지고 있는건 아니겠지?
         // battle unitgenerator 언제만들어지는거야 대체
