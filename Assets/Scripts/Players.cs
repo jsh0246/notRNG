@@ -35,7 +35,7 @@ public class Players : NetworkBehaviour
         players.Add(player);
         
         print(players.Count);
-        message.text = players.Count.ToString();
+        message.text = players.Count.ToString() + "P Playing";
     }
 
     public static Players Instance
