@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Battle" Collapsed="true">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAEAAAAAAIAAAAAAAAAAgAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Battle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerInput" Collapsed="true">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQCAABBAKAAAAAAAAAAAgAAAAAAAAIEAAAAAEAIEBA=</HashCode>
+      <FileName>Assets\Scripts\MouseInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="notRNGSpawner" Collapsed="true">
+    <Position X="2.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ANQFAACAAAAIAAQgAQAAACAgkAgAAAAAAASAAAACABA=</HashCode>
+      <FileName>Assets\Scripts\notRNGSpawner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Players" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAYAAAAAAAAGA=</HashCode>
+      <FileName>Assets\Scripts\Players.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProceduralTetrahedron" Collapsed="true">
+    <Position X="8" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAACAAAAAAAIEAAQAAAAARAAgAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\ProceduralTetrahedron.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rotation" Collapsed="true">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Rotation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RSPObject" Collapsed="true">
+    <Position X="4.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASYAACAACAAAADEoIAAAYAFQAgIgAEAQBQCAAIABQA=</HashCode>
+      <FileName>Assets\Scripts\RSPObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SelectionManager" Collapsed="true">
+    <Position X="4.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAoAAEAAAAAACAAAAAAAAAAAAQAAQQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SelectionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnitGenerator" Collapsed="true">
+    <Position X="6.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAAAAAAAAAAAAAAAAAAEAAAUAAAQAAAAAAAAAQAAAGA=</HashCode>
+      <FileName>Assets\Scripts\UnitGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnitSets" Collapsed="true">
+    <Position X="2.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAABAgAABQAAAAQBAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\UnitSets.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wall" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAQAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Wall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VoronoiColoring" Collapsed="true">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAACAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\VoronoiColoring.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapGeneratorPreview" Collapsed="true">
+    <Position X="4.5" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACMAJQAiACEoQAIAAAGwSAAAIAAIBKQAQAAAAAAACBA=</HashCode>
+      <FileName>Assets\Voronoi\Scripts\MapGenerator\MapGeneratorPreview.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapTextureGenerator" Collapsed="true">
+    <Position X="6.75" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgQAAAAAAgAECAAAEAQAKAQABAAACAAAAAAAAA=</HashCode>
+      <FileName>Assets\Voronoi\Scripts\MapGenerator\MapTextureGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
